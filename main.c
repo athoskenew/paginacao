@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "matriz.c"
+#include "lista.c"
 
 //  inicio do struct de processos
 struct processo{
@@ -24,11 +25,13 @@ void imprime_processo (matriz_t* p);
 */    
 
 //  vetor que será a "página real"
-int pagina_r[100];
 
 //  inicio da função main
 int main(void){
-	//Processo p;
+	Lista* l;
+	l = lst_pagina; //cria a pagina com 100 posicoes
+	lst_imprime_matriz(l); //imprime a pagina completa
+	
 	matriz_t * m = matriz_criar(5,5); // linhas x colunas
 	criar_processo(m,2,0,1);
 	matriz_imprimir(m);
