@@ -29,8 +29,8 @@ void imprime_processo (matriz_t* p);
 //  inicio da função main
 int main(void){
 	Lista* l;
-	l = lst_pagina; //cria a pagina com 100 posicoes
-	lst_imprime_matriz(l); //imprime a pagina completa
+	//l = lst_pagina; //cria a pagina com 100 posicoes
+	//lst_imprime_matriz(l); //imprime a pagina completa
 	
 	matriz_t * m = matriz_criar(5,5); // linhas x colunas
 	criar_processo(m,2,0,1);
