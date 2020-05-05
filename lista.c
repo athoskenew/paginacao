@@ -1,10 +1,10 @@
 /* lista.c */
-
+/*irraaa*/
 #include <stdio.h>
 #include <stdlib.h>
 #include "lista.h"
 
-struct lista {			// estrutura de cada nó da lista
+struct lista {			// estrutura de cada nÃ³ da lista
 	int info;
 	struct lista* prox;
 };
@@ -14,34 +14,34 @@ Lista* lst_cria() {
 }
 
 Lista* lst_insere(Lista* l, int i) {
-	Lista* novo = (Lista*) malloc(sizeof(Lista));	// aloca espaço de memória para o novo Nó
-	if( novo == NULL ) {							// caso não haja memória suficiente
+	Lista* novo = (Lista*) malloc(sizeof(Lista));	// aloca espaÃ§o de memÃ³ria para o novo NÃ³
+	if( novo == NULL ) {							// caso nÃ£o haja memÃ³ria suficiente
 		printf("Memoria insuficiente!\n");			// saia
 		exit(1);
 	}
-	novo->info = i;									// atribui a informação do argumento à informação do Nó
-	novo->prox = l;									// liga o ponteiro 'prox' do Nó ao primeiro elemento da lista
-	return novo;									// retorna o ponteiro para o Nó criado, para que passe a ser o primeiro
+	novo->info = i;									// atribui a informaÃ§Ã£o do argumento Ã  informaÃ§Ã£o do NÃ³
+	novo->prox = l;									// liga o ponteiro 'prox' do NÃ³ ao primeiro elemento da lista
+	return novo;									// retorna o ponteiro para o NÃ³ criado, para que passe a ser o primeiro
 }
 
 void lst_imprime(Lista* l) {
-	Lista* aux;										// ponteiro de lista auxiliar para percorrê-la
-	for(aux = l; aux != NULL; aux = aux->prox) {	// laço para percorrer cada Nó
-		printf("%d ", aux->info);	// e imprimir o seu conteúdo
+	Lista* aux;										// ponteiro de lista auxiliar para percorrÃª-la
+	for(aux = l; aux != NULL; aux = aux->prox) {	// laÃ§o para percorrer cada NÃ³
+		printf("%d ", aux->info);	// e imprimir o seu conteÃºdo
 	}
 	printf("\n");
 }
 void lst_imprime_matriz(Lista* l) {
 	Lista* aux;
-	int i,j = 0;								    // ponteiro de lista auxiliar para percorrê-la
-	for(aux = l; aux != NULL; aux = aux->prox) {	// laço para percorrer cada Nó
+	int i,j = 0;								    // ponteiro de lista auxiliar para percorrÃª-la
+	for(aux = l; aux != NULL; aux = aux->prox) {	// laÃ§o para percorrer cada NÃ³
 		if(j<10){
 			printf("[%d  -> %d] ", j, aux->info);
 		}
 		else{
 			printf("[%d -> %d] ", j, aux->info);
 		}
-		i++;										// e imprimir o seu conteúdo
+		i++;										// e imprimir o seu conteÃºdo
 		j++;
 		if(i==10){
 			printf("\n");
@@ -60,47 +60,46 @@ Lista* lst_pagina(Lista* l){
 }
 
 int lst_vazia(Lista* l) {
-	if( l == NULL )									// se a lista for vazia, então seu ponteiro é nulo
+	if( l == NULL )									// se a lista for vazia, entÃ£o seu ponteiro Ã© nulo
 		return 1;									// retorne '1' se for vazia
 	else
-		return 0;									// '0' caso contrário
+		return 0;									// '0' caso contrÃ¡rio
 }
 
 Lista* lst_busca(Lista* l, int valor) {
-	Lista* p;										// ponteiro auxiliar de lista para percorrê-la
-	for(p = l; p != NULL; p = p->prox)				// laço principal. Executa até o fim da lista
+	Lista* p;										// ponteiro auxiliar de lista para percorrÃª-la
+	for(p = l; p != NULL; p = p->prox)				// laÃ§o principal. Executa atÃ© o fim da lista
 		if( p->info == valor )						// se encontrar o valor,
-			return p;								// retorne o ponteiro para nó que contém o valor
-	return NULL;									// se não encontrar, o laço encerra e um valor 'NULL' é retornado, indicando fim da lista
+			return p;								// retorne o ponteiro para nÃ³ que contÃ©m o valor
+	return NULL;									// se nÃ£o encontrar, o laÃ§o encerra e um valor 'NULL' Ã© retornado, indicando fim da lista
 }
 
 Lista* lst_retira(Lista* l, int valor) {
-	Lista* ant = NULL;								// ponteiro auxiliar para guardar a referência do nó anterior
+	Lista* ant = NULL;								// ponteiro auxiliar para guardar a referÃªncia do nÃ³ anterior
 	Lista* p = l;									// ponteiro auxiliar para percorrer a lista
 	
-	while(p != NULL && p->info != valor) {			// o laço executa até atingir o fim da lista ou até o valor ter sido encontrado
-		ant = p;									// atualiza o valor do ponteiro anterior para o nó atual
-		p = p->prox;								// atualiza o valor do ponteiro atual para o próximo
+	while(p != NULL && p->info != valor) {			// o laÃ§o executa atÃ© atingir o fim da lista ou atÃ© o valor ter sido encontrado
+		ant = p;									// atualiza o valor do ponteiro anterior para o nÃ³ atual
+		p = p->prox;								// atualiza o valor do ponteiro atual para o prÃ³ximo
 	}
 	
-	if( p == NULL )									// se tiver atingido o fim da lista significa que o valor não foi encontrado
-		return l;										// então retorne a lista original, sem mudanças
+	if( p == NULL )									// se tiver atingido o fim da lista significa que o valor nÃ£o foi encontrado
+		return l;										// entÃ£o retorne a lista original, sem mudanÃ§as
 		
-	if( ant == NULL )								// se o valor inicial de 'ant' (NULL) não tiver sido alterado, significa que o nó removido foi o primeiro
-		l = p->prox;									// então basta apontar o ponteiro original da lista para o segundo nó
-	else											// caso contrário (o elemento a ser retirado NÃO é o primeiro, ou seja, está no meio ou fim da lista)
-		ant->prox = p->prox;							// então basta conectar o nó anterior com o próximo do nó que foi removido
+	if( ant == NULL )								// se o valor inicial de 'ant' (NULL) nÃ£o tiver sido alterado, significa que o nÃ³ removido foi o primeiro
+		l = p->prox;									// entÃ£o basta apontar o ponteiro original da lista para o segundo nÃ³
+	else											// caso contrÃ¡rio (o elemento a ser retirado NÃƒO Ã© o primeiro, ou seja, estÃ¡ no meio ou fim da lista)
+		ant->prox = p->prox;							// entÃ£o basta conectar o nÃ³ anterior com o prÃ³ximo do nÃ³ que foi removido
 		
-	free(p);										// libere o espaço de memória apenas do nó que foi removido
-	return l;										// retorne o ponteiro original da lista para atualizá-la
+	free(p);										// libere o espaÃ§o de memÃ³ria apenas do nÃ³ que foi removido
+	return l;										// retorne o ponteiro original da lista para atualizÃ¡-la
 }
 
 void lst_libera(Lista* l) {
-	Lista* p = l;									// ponteiro auxiliar para percorrer a lista, nó a nó
-	while( p!=NULL ) {								// o laço executa até que se atinja o fim da lista
-		Lista* t = p->prox;								// um ponteiro auxiliar local guarda a referência do próximo nó, para que o atual possa ser liberado sem perdas de referência
-		free(p);										// desaloca o espaço de memória do nó a ser removido
-		p = t;											// atualiza o ponteiro que percorre para o próximo nó, que foi guardado anteriormente em 't'
+	Lista* p = l;									// ponteiro auxiliar para percorrer a lista, nÃ³ a nÃ³
+	while( p!=NULL ) {								// o laÃ§o executa atÃ© que se atinja o fim da lista
+		Lista* t = p->prox;								// um ponteiro auxiliar local guarda a referÃªncia do prÃ³ximo nÃ³, para que o atual possa ser liberado sem perdas de referÃªncia
+		free(p);										// desaloca o espaÃ§o de memÃ³ria do nÃ³ a ser removido
+		p = t;											// atualiza o ponteiro que percorre para o prÃ³ximo nÃ³, que foi guardado anteriormente em 't'
 	}
 }
-
